@@ -25,14 +25,17 @@ class Ventana:
         Label(frame1, text="Edad:").grid(row=3, column=0)
         Entry(frame1, textvariable=self.edad).grid(row=3, column=1)
         
-        Button(frame2, text="Aceptar", command=self.boton_aceptar).pack(side="left", padx=10)
+        Button(frame2, text="Aceptar", command=self.aceptar).pack(side="left", padx=10)
         Button(frame2, text="Cancelar", command=self.window.destroy).pack(side="right", padx=10)
         
-    def boton_aceptar(self):
+    def aceptar(self):
 
         persona = Persona(int(self.doc.get()), self.nom.get(), self.ape.get(), int(self.edad.get()))
         messagebox.showinfo(title="Persona", message=persona)
-
+        self.doc.set("")
+        self.nom.set("")
+        self.ape.set("")
+        self.edad.set("")
     
     def mostrar(self):
         self.window.mainloop()
