@@ -28,8 +28,8 @@ class Ventana:
         self.ape.grid(row=2, column=1)
         self.label_edad.grid(row=3, column=0)
         self.edad.grid(row=3, column=1)
-        self.btn_aceptar.pack(side="left")
-        self.btn_cancelar.pack(side="right")
+        self.btn_aceptar.pack(side="left", padx=10)
+        self.btn_cancelar.pack(side="right", padx=10)
         
     def boton_aceptar(self):
         doc = self.doc.get()
