@@ -1,5 +1,4 @@
 from ventana import Ventana
-
-ventana = Ventana()
-
-ventana.mostrar()
+from padron import Padron
+padron = Padron()
+Ventana(padron).mostrar()

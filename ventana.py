@@ -1,10 +1,12 @@
 from persona import Persona
+from listado import ListadoPersonas
 from tkinter import *
 from tkinter import messagebox
 class Ventana:
-    def __init__(self):
+    def __init__(self, padron):
         self.window = Tk()
         self.window.title("Alta de persona")
+        self.padron = padron
         
         frame1 = Frame()
         frame1.pack(pady=20, padx=10)
@@ -27,11 +29,14 @@ class Ventana:
         
         Button(frame2, text="Aceptar", command=self.aceptar).pack(side="left", padx=10)
         Button(frame2, text="Cancelar", command=self.window.destroy).pack(side="right", padx=10)
+        Button(frame2, text="Listar", command=self.listar).pack(side="right", padx=10)
+        
         
     def aceptar(self):
 
         persona = Persona(int(self.doc.get()), self.nom.get(), self.ape.get(), int(self.edad.get()))
         messagebox.showinfo(title="Persona", message=persona)
+        self.padron.agregar(persona)
         self.doc.set("")
         self.nom.set("")
         self.ape.set("")
@@ -39,3 +44,6 @@ class Ventana:
     
     def mostrar(self):
         self.window.mainloop()
+        
+    def listar(self):
+        ListadoPersonas(self.padron).mostrar()
